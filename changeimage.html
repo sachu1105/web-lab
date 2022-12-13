@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <div class="content" id="content">
+<img src="green-forest-road.jpg" width="1340" height="400"   id="ab">
+<center>
+<h1 id="bc">change image 1</h1> 
+<h2 id="bd">change image 2</h2>
+</center>
+</div>
+<script>
+    document.getElementById('ab').addEventListener("mouseover",change1);
+    document.getElementById('ab').addEventListener("mouseout",change2);
+    function change1()
+    {
+        document.getElementById('ab').src="1_FPtQLT2Zk-baHficCz_mXQ.png";
+        document.getElementById('bc').style.display= "none";
+        document.getElementById('bd').style.display="block";
+    }
+    function change2()
+    {
+        document.getElementById('ab').src="front-left-side-47.jpg";
+        document.getElementById('bc').style.display="block";
+        document.getElementById('bd').style.display= "none";
+    }
+    </script>
+</body>
+</html>
