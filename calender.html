@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function generate()
+        {
+            var init_content="<table BORDER=1 id='calender'><tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr><tr>"
+                var year_get=document.getElementById("year_get").value;
+                var month_get=document.getElementById("month_get").value;
+                month_get -=1;
+
+
+            var date = new Date(year_get,month_get);
+            var day=date.getDay();
+            for (var i=0; i< day;i++)
+            {
+                init_content +="<td></td>";
+
+            }   
+            while (date.getMonth()==month_get)
+            {
+                init_content+="<td>"+date.getDate() +"</td>";
+                if(date.getDay() %7==6)
+                {
+                    init_content +="</tr><tr>";
+
+                }
+                date.setDate(date.getDate()+1);
+
+            } 
+            while(date.getDay()%7 !=6 && date.getDay()%7!=0)
+            {
+                init_content +="<td></td>";
+                date.setDate(date.getDate()+1);
+
+            }
+            if(date.getDay() %7>0)
+            {
+                init_content +="<td></td></tr>";
+
+            }
+            init_content+="</table>"
+            document.getElementById("content").innerHTML = init_content;
+        }
+    </script>
+  
+
+</head>
+<body>
+    <div class="selection">
+        <table class="tabselection" cellspacing="10">
+
+<tbody>
+<tr class="serlow">
+    <td  class="sclcol"><input id="year_get" type="number" placeholder="year">
+</td>
+     <td class="selcol"><input id="month_get" type="number" placeholder="month">
+     </td>
+    </tr>
+    <tr class="selrow">
+        <td colspan="2" class="selcol"><input onclick="generate()" type="button"
+id="subtn" value="generate calender"></td>
+    </tr>
+    <tr class="selrow">
+        <td colspan="2" class="selcol"><input type="reset" id="resetbtn"
+onclick="location.reload();"></td>
+    </tr>
+    </tbody>
+       </table>
+</div>
+<div id="content"> </div>
+</body>
+</html>
